@@ -8,33 +8,33 @@
                 "description": "Name of the App Service Environment"
             }
         },
-        "aseLocation": { 
-            "type": "string", 
-            "allowedValues": [ 
-                "Central US", 
-                "East US", 
-                "East US 2", 
-                "North Central US", 
-                "South Central US", 
+        "aseLocation": {
+            "type": "string",
+            "allowedValues": [
+                "Central US",
+                "East US",
+                "East US 2",
+                "North Central US",
+                "South Central US",
                 "West US",
-                "Canada Central", 
-                "North Europe", 
-                "West Europe", 
-                "East Asia", 
-                "Southeast Asia", 
-                "Japan East", 
-                "Japan West", 
-                "Brazil South", 
-                "Australia East", 
-                "Australia Southeast", 
-                "West India", 
-                "Central India", 
-                "South India" 
-            ], 
-            "metadata": { 
-                "description": "Location of the App Service Environment" 
-            } 
-         }, 
+                "Canada Central",
+                "North Europe",
+                "West Europe",
+                "East Asia",
+                "Southeast Asia",
+                "Japan East",
+                "Japan West",
+                "Brazil South",
+                "Australia East",
+                "Australia Southeast",
+                "West India",
+                "Central India",
+                "South India"
+            ],
+            "metadata": {
+                "description": "Location of the App Service Environment"
+            }
+         },
         "ipSslAddressCount": {
             "type": "int",
             "defaultValue": 0,
@@ -147,12 +147,22 @@
             }
         }
     },
+    "variables": {
+      "tags": {
+          "environment": "sandbox",
+          "application": "sandbox ase",
+          "team": "cloud arch",
+          "contact-email": "allen.lyons@turner.com",
+          "customer": "mss"
+      }
+    },
     "resources": [
       {
         "apiVersion": "2015-08-01",
         "type": "Microsoft.Web/hostingEnvironments",
         "name": "[parameters('aseName')]",
         "location": "[parameters('aseLocation')]",
+        "tags": "[variables('tags')]",
         "properties": {
           "name": "[parameters('aseName')]",
           "location": "[parameters('aseLocation')]",
